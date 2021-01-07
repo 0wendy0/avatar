@@ -1,0 +1,35 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/user/user"
+  ],
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index"
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#010617",
+    "navigationBarTitleText": "头像",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#85888E",
+    "backgroundColor": "#0D111F",
+    "selectedColor": "#FFFFFF",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首 页",
+        "iconPath": "/public/images/home.png",
+        "selectedIconPath": "/public/images/home-select.png"
+      },
+      {
+        "pagePath": "pages/user/user",
+        "text": "我 的",
+        "iconPath": "/public/images/user.png",
+        "selectedIconPath": "/public/images/user-select.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}
