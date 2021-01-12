@@ -1,19 +1,17 @@
+import api from 'api'
+
 function login () {
   wx.login({
     success (res) {
       if (res.code) {
-        wx.request({
-          url: 'https://avatar.wendy.fun/api/login',
-          method: 'POST',
-          data: {
-            code: res.code
-          },
-          success (data) {
-            var token = data.data.data.token
-            wx.setStorageSync('token',token)
-            getApp().globalData.token = token
-          }
-        })
+        var data = {
+          code: res.code
+        }
+        api.login(data).then((res) => {
+          wx.setStorageSync('token', res.data.token)
+          getApp().globalData.token = res.data.token
+          wx.navigateBack()
+        });
       }
     }
   })

@@ -1,0 +1,23 @@
+.textBox {
+  height: 40px;
+  width: 85%;
+  margin-top: 10px;
+  font-size: 12px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cardBox {
+  --grid-item-content-background-color: #1C2233;
+}
+
+.cardInfo {
+  margin-top: 3px;
+  font-size: 10px;
+  color: #85888E;
+  display: flex;
+  justify-content: space-between;
+  overflow: hidden;
+  white-space: nowrap;
+}

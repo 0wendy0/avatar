@@ -1,0 +1,13 @@
+.buttonBox {
+  /* --goods-action-background-color: #0D111F; */
+  /* --goods-action-icon-background-color: #0D111F; */
+  --goods-action-icon-color: #85888E;
+}
+
+.like {
+  --goods-action-icon-color: #ee0a24;
+}
+
+.star {
+  --goods-action-icon-color: #FFCE1B;
+}

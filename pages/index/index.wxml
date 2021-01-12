@@ -1,3 +1,47 @@
-<view class="container">
-  <van-button type="primary">按钮</van-button>
+<view>
+  <van-row>
+    <van-col span="5">
+      <van-sidebar
+          class="sideBar"
+          active-key="{{ activeKey }}"
+          bind:change="categoryChange"
+      >
+        <van-sidebar-item 
+          wx:for="{{ categoryParentList }}" 
+          wx:key="id"
+          title="{{ item.title }}"
+        />
+      </van-sidebar>
+    </van-col>
+    <van-col span="19">
+      <view class="topBox"></view>
+      <van-grid 
+        class="categoryBox"
+        column-num="2" 
+        gutter="20"
+      >
+        <van-grid-item
+          use-slot
+          wx:for="{{ categoryList }}" 
+          wx:key="id"
+          link-type="navigateTo"
+          url="/pages/card/list?id={{ item.id }}&title={{ item.title }}"
+        >
+          <view>
+            <van-image 
+              round
+              width="60"
+              height="60"
+              lazy-load 
+              src="{{ item.image }}" 
+            />
+          </view>
+          <view class="textBox">
+            <span>{{ item.title }}</span>
+          </view>
+        </van-grid-item>
+      </van-grid>
+    </van-col>
+  </van-row>
+  <van-toast id="van-toast" />
 </view>

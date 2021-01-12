@@ -1,0 +1,32 @@
+<view>
+  <van-grid 
+    class="cardBox"
+    column-num="2" 
+    gutter="20"
+  >
+    <van-grid-item
+      use-slot
+      wx:for="{{ cardList }}" 
+      wx:key="id"
+      link-type="navigateTo"
+      url="/pages/card/detail?id={{ item.id }}&title={{ item.title }}"
+    >
+      <view>
+        <van-image
+          width="110"
+          height="110"
+          lazy-load 
+          src="{{ item.cover_image }}" 
+        />
+      </view>
+      <view class="textBox">
+        <view>{{ item.title }}</view>
+        <view class="cardInfo">
+          <view>{{ item.dateTime }}</view>
+          <view>{{ item.user.nickname }}</view>
+        </view>
+      </view>
+    </van-grid-item>
+  </van-grid>
+  <van-toast id="van-toast" />
+</view>

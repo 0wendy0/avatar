@@ -1,10 +1,23 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/user/user"
+    "pages/login/login",
+    "pages/user/user",
+    "pages/card/list",
+    "pages/card/detail"
   ],
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index"
+    "van-row": "@vant/weapp/row/index",
+    "van-col": "@vant/weapp/col/index",
+    "van-sidebar": "@vant/weapp/sidebar/index",
+    "van-sidebar-item": "@vant/weapp/sidebar-item/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-grid": "@vant/weapp/grid/index",
+    "van-grid-item": "@vant/weapp/grid-item/index",
+    "van-image": "@vant/weapp/image/index",
+    "van-goods-action": "@vant/weapp/goods-action/index",
+    "van-goods-action-icon": "@vant/weapp/goods-action-icon/index",
+    "van-goods-action-button": "@vant/weapp/goods-action-button/index"
   },
   "window":{
     "backgroundTextStyle":"light",

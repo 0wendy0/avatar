@@ -1,0 +1,25 @@
+<view>
+  <view>
+    <swiper indicator-dots bindchange="imgChane" style="height:{{ height }}">
+      <block wx:for="{{ fileList }}" wx:key="index">
+        <swiper-item>
+          <view>
+            <van-image class="imgItem" width="400" height="400" src="{{ item.url }}" />
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <van-goods-action class="buttonBox">
+    <van-goods-action-icon icon="like-o" text="" bind:click="onClickIcon" />
+    <van-goods-action-icon class="like" icon="like" text="" bind:click="onClickIcon" />
+    <van-goods-action-icon icon="star-o" text="" bind:click="onClickIcon" />
+    <van-goods-action-icon class="star" icon="star" text="" bind:click="onClickIcon" />
+    <van-goods-action-button
+      text="保存图片"
+      type="primary"
+      bind:click="saveImage"
+    />
+  </van-goods-action>
+  <van-toast id="van-toast" />
+</view>
