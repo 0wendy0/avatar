@@ -1,6 +1,4 @@
 .buttonBox {
-  /* --goods-action-background-color: #0D111F; */
-  /* --goods-action-icon-background-color: #0D111F; */
   --goods-action-icon-color: #85888E;
 }
 
@@ -10,4 +8,16 @@
 
 .star {
   --goods-action-icon-color: #FFCE1B;
+}
+
+.imgItem {
+  width: 120px;
+  height: 120px;
+  display: inline-block;
+  margin:0 10px;
+  border: 1px solid #ffffff;
+}
+
+.imgItem-select {
+  border: 1px solid #ffbb00;
 }

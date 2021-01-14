@@ -19,6 +19,7 @@
         class="categoryBox"
         column-num="2" 
         gutter="20"
+        border="{{ false }}"
       >
         <van-grid-item
           use-slot
@@ -43,5 +44,5 @@
       </van-grid>
     </van-col>
   </van-row>
-  <van-toast id="van-toast" />
 </view>
+<van-toast id="van-toast" />

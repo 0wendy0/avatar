@@ -7,6 +7,12 @@ const base = {
 const needLoginCode = [1000, 1001, 1002, 1003]
 
 function request(url, method, data) {
+  Toast.loading({
+    duration: 0,
+    message: '加载中...',
+    forbidClick: true,
+    mask: true
+  })
   var app = getApp()
   var url = base.host + url
   var token = 'Bearer ' + app.globalData.token
@@ -20,6 +26,7 @@ function request(url, method, data) {
       data: data,
       header: header,
       success (request) {
+        Toast.clear()
         if(request.statusCode !== 200) {
           Toast.fail('请求失败')
           return reject(request.data.msg)
@@ -62,9 +69,29 @@ function cardDetail(data) {
   return request('api/card/detail', 'get', data)
 }
 
+function cardLike(data) {
+  return request('api/card/like', 'post', data)
+}
+
+function cardDisLike(data) {
+  return request('api/card/disLike', 'post', data)
+}
+
+function cardStar(data) {
+  return request('api/card/star', 'post', data)
+}
+
+function cardDisStar(data) {
+  return request('api/card/disStar', 'post', data)
+}
+
 module.exports = {
   login,
   categoryList,
   cardList,
-  cardDetail
+  cardDetail,
+  cardLike,
+  cardDisLike,
+  cardStar,
+  cardDisStar
 }

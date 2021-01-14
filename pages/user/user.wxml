@@ -10,5 +10,5 @@
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
   </view>
-  <van-toast id="van-toast" />
 </view>
+<van-toast id="van-toast" />

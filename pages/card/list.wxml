@@ -3,6 +3,7 @@
     class="cardBox"
     column-num="2" 
     gutter="20"
+    border="{{ false }}"
   >
     <van-grid-item
       use-slot
@@ -28,5 +29,5 @@
       </view>
     </van-grid-item>
   </van-grid>
-  <van-toast id="van-toast" />
 </view>
+<van-toast id="van-toast" />

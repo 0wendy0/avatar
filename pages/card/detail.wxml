@@ -1,25 +1,26 @@
 <view>
-  <view>
-    <swiper indicator-dots bindchange="imgChane" style="height:{{ height }}">
-      <block wx:for="{{ fileList }}" wx:key="index">
-        <swiper-item>
-          <view>
-            <van-image class="imgItem" width="400" height="400" src="{{ item.url }}" />
-          </view>
-        </swiper-item>
-      </block>
-    </swiper>
+  <view style="margin: 10% 10px;">
+    <view style="height:{{ height }};">
+      <cover-image wx:if='{{ currentImage }}' src="{{ currentImage }}" />
+    </view>
+  </view>
+  <view style="margin-top: 20%">
+    <scroll-view scroll-x enable-flex enhanced style="width: 100%;white-space: nowrap;">
+      <view wx:for="{{ fileList }}" wx:key="index" data-index="{{ index }}" class="imgItem {{index == currentIndex ? 'imgItem-select' : ''}}" bindtap="clickImg">
+        <van-image width="120" height="120" src="{{ item.url }}" />
+      </view>
+    </scroll-view>
   </view>
   <van-goods-action class="buttonBox">
-    <van-goods-action-icon icon="like-o" text="" bind:click="onClickIcon" />
-    <van-goods-action-icon class="like" icon="like" text="" bind:click="onClickIcon" />
-    <van-goods-action-icon icon="star-o" text="" bind:click="onClickIcon" />
-    <van-goods-action-icon class="star" icon="star" text="" bind:click="onClickIcon" />
+    <van-goods-action-icon wx:if="{{ isLike }}" class="like" icon="like" text="{{ likeCount }}" bind:click="cardDisLike" />
+    <van-goods-action-icon wx:else icon="like-o" text="{{ likeCount }}" bind:click="cardLike" />
+    <van-goods-action-icon wx:if="{{ isStar }}" class="star" icon="star" text="{{ starCount }}" bind:click="cardDisStar" />
+    <van-goods-action-icon wx:else icon="star-o" text="{{ starCount }}" bind:click="cardStar" />
     <van-goods-action-button
       text="保存图片"
       type="primary"
       bind:click="saveImage"
     />
   </van-goods-action>
-  <van-toast id="van-toast" />
 </view>
+<van-toast id="van-toast" />

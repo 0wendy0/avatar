@@ -1,4 +1,7 @@
 {
   "navigationBarTitleText": "列表",
-  "usingComponents": {}
+  "usingComponents": {},
+  "backgroundTextStyle": "dark",
+  "backgroundColorTop": "#010617",
+  "backgroundColorBottom": "#010617"
 }
