@@ -1,7 +1,7 @@
 <view>
   <view style="margin: 10% 10px;">
-    <view style="height:{{ height }};">
-      <cover-image wx:if='{{ currentImage }}' src="{{ currentImage }}" />
+    <view>
+      <van-image height="{{ height }}" width="{{ width }}" src="{{ currentImage }}" />
     </view>
   </view>
   <view style="margin-top: 20%">
@@ -12,7 +12,7 @@
     </scroll-view>
   </view>
   <van-goods-action class="buttonBox">
-    <van-goods-action-icon wx:if="{{ isLike }}" class="like" icon="like" text="{{ likeCount }}" bind:click="cardDisLike" />
+    <van-goods-action-icon wx:if="{{ likeCount }}" class="like" icon="like" text="{{ likeCount }}" bind:click="cardLike" />
     <van-goods-action-icon wx:else icon="like-o" text="{{ likeCount }}" bind:click="cardLike" />
     <van-goods-action-icon wx:if="{{ isStar }}" class="star" icon="star" text="{{ starCount }}" bind:click="cardDisStar" />
     <van-goods-action-icon wx:else icon="star-o" text="{{ starCount }}" bind:click="cardStar" />

@@ -1,14 +1,27 @@
-<!--index.wxml-->
-<view class="container">
-  <!-- <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
+<view>
+  <view class="userinfo">
+    <view wx:if="{{!hasUserInfo}}">
+      <van-button round open-type="getUserInfo" bind:getuserinfo="getUserInfo" color="#3D3AFF">授权用户信息</van-button>
+    </view>
     <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+      <van-image
+        round
+        width="80"
+        height="80"
+        lazy-load
+        src="{{ userInfo.avatar }}"
+      />
+      <text class="userinfo-nickname">{{ userInfo.nickname }}</text>
     </block>
-  </view> -->
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="list-box">
+    <van-cell-group>
+      <van-cell title="我的收藏" is-link link-type="navigateTo" url="/pages/user/starList" />
+      <van-cell title="我的关注" is-link link-type="navigateTo" url="/pages/user/followList" />
+    </van-cell-group>
+  </view>
+  <view style="margin:30px 20px">
+    <van-button round block open-type="contact" color="#3D3AFF">联系客服</van-button>
   </view>
 </view>
 <van-toast id="van-toast" />

@@ -1,0 +1,4 @@
+<view>
+  <van-empty description="暂无关注" />
+</view>
+<van-toast id="van-toast" />

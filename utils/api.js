@@ -57,6 +57,14 @@ function login(data) {
   return request('api/login', 'post', data)
 }
 
+function userInfo() {
+  return request('api/user/info', 'get', {})
+}
+
+function userSet(data) {
+  return request('api/user/set', 'post', data)
+}
+
 function categoryList(data) {
   return request('api/category/list', 'get', data)
 }
@@ -73,10 +81,6 @@ function cardLike(data) {
   return request('api/card/like', 'post', data)
 }
 
-function cardDisLike(data) {
-  return request('api/card/disLike', 'post', data)
-}
-
 function cardStar(data) {
   return request('api/card/star', 'post', data)
 }
@@ -85,13 +89,19 @@ function cardDisStar(data) {
   return request('api/card/disStar', 'post', data)
 }
 
+function starList(data) {
+  return request('api/user/star/list', 'get', data)
+}
+
 module.exports = {
   login,
+  userInfo,
+  userSet,
   categoryList,
   cardList,
   cardDetail,
   cardLike,
-  cardDisLike,
   cardStar,
-  cardDisStar
+  cardDisStar,
+  starList
 }

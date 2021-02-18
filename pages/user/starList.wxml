@@ -1,0 +1,38 @@
+<view>
+  <scroll-view wx:if="{{ list.length }}" scroll-y="true" style="height: {{ scrollHeight }}px" bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-top="0">
+    <view
+      wx:for="{{ list }}" 
+      wx:key="id"
+      wx:for-item="item"
+      wx:for-index="index"
+      class="star-box-item"
+    >
+      <van-swipe-cell 
+        right-width="60"
+      >
+        <view class="star-item" data-card_id="{{ item.card_id }}" data-title="{{ item.title }}" bindtap="toCardDetail">
+          <view class="star-item-content">
+            <van-image
+              width="80"
+              height="80"
+              lazy-load
+              src="{{ item.cover_image }}"
+            />
+          </view>
+          <view class="star-item-content">
+            <view class="star-item-title">
+              {{ item.title }}
+            </view>
+            <view class="star-item-nickname">
+              {{ item.nickname }}
+            </view>
+          </view>
+        </view>
+        <van-button class="star-item-delete" type="danger" slot="right" data-index="{{ index }}" bind:click="deleteItem">删除</van-button>
+      </van-swipe-cell>
+    </view>
+  </scroll-view>
+  <van-empty wx:else description="暂无收藏" />
+</view>
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

@@ -1,5 +1,5 @@
-/**index.wxss**/
 .userinfo {
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,4 +18,15 @@
 
 .usermotto {
   margin-top: 200px;
+}
+
+.list-box {
+  margin-top: 30px;
+  --cell-vertical-padding: 20px;
+  --cell-border-color: #ffffff;
+  --cell-right-icon-color: #ffffff;
+  --cell-active-color: #010617;
+  --cell-background-color: #010617;
+  --cell-text-color: #ffffff;
+  --cell-group-background-color: #010617;
 }

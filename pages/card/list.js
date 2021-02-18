@@ -13,7 +13,7 @@ Page({
     })
     this.setData({
       categoryId: options.id
-    })
+    }),
     this.getPageData()
   },
   getPageData() {

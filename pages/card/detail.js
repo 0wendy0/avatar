@@ -1,4 +1,5 @@
 import api from '../../utils/api'
+import util from '../../utils/util'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast';
 
 Page({
@@ -6,10 +7,10 @@ Page({
     cardId: 0,
     currentIndex: 0,
     currentImage: '',
-    height: '300px',
+    height: '300',
+    height: '300',
     detail: null,
     fileList: [],
-    isLike: false,
     isStar: false,
     likeCount: 0,
     starCount: 0
@@ -22,6 +23,8 @@ Page({
     this.setData({
       cardId: options.id
     })
+  },
+  onShow: function () {
     this.getPageData()
   },
   getPageData() {
@@ -29,13 +32,11 @@ Page({
       cardId: this.data.cardId
     }
     api.cardDetail(data).then(res => {
-      var isLike = res.data.detail.like_time ? true : false
       var isStar = res.data.detail.star_time ? true : false
       this.setData({
         detail: res.data.detail,
         fileList: res.data.detail.file,
         currentImage: res.data.detail.file[this.data.currentIndex].url,
-        isLike: isLike,
         isStar: isStar,
         likeCount: res.data.detail.like_count,
         starCount: res.data.detail.star_count
@@ -45,10 +46,10 @@ Page({
     })
   },
   goheight (e) {
-    var width = wx.getSystemInfoSync().screenWidth
-    var height = (width - 20) + 'px'
+    var width = wx.getSystemInfoSync().screenWidth - 20
     this.setData({
-      height: height
+      width: width,
+      height: width
     })
   },
   saveImage () {
@@ -101,16 +102,6 @@ Page({
     api.cardLike({ "id": this.data.cardId }).then(res => {
       var likeCount = this.data.likeCount + 1
       this.setData({
-        isLike: true,
-        likeCount: likeCount
-      })
-    })
-  },
-  cardDisLike () {
-    api.cardDisLike({ "id": this.data.cardId }).then(res => {
-      var likeCount = this.data.likeCount - 1
-      this.setData({
-        isLike: false,
         likeCount: likeCount
       })
     })
@@ -122,6 +113,28 @@ Page({
         isStar: true,
         starCount: starCount
       })
+      var pages = getCurrentPages()
+      var prevPage = pages[pages.length - 2] 
+      if(prevPage.route === 'pages/user/starList') {
+        var list = prevPage.data.list
+        var now = new Date()
+        var data = {
+          avatar: this.data.detail.user.avatar,
+          card_id: this.data.cardId,
+          cover_image: this.data.detail.cover_image,
+          created_at: this.data.detail.created_at,
+          id: null,
+          like_count: this.data.likeCount,
+          nickname: this.data.detail.user.nickname,
+          star_count: starCount,
+          star_time: util.formatDate(now, "yyyy-mm-dd hh:mi:ss"),
+          title: this.data.detail.title
+        }
+        list.unshift(data)
+        prevPage.setData({
+          list: list
+        })
+      }
     })
   },
   cardDisStar () {
@@ -131,6 +144,19 @@ Page({
         isStar: false,
         starCount: starCount
       })
+      var pages = getCurrentPages()
+      var prevPage = pages[pages.length - 2] 
+      if(prevPage.route === 'pages/user/starList') {
+        var list = prevPage.data.list
+        list.forEach((item, index) => {
+          if(item.card_id == this.data.cardId) {
+            list.splice(index, 1)
+          }
+        })
+        prevPage.setData({
+          list: list
+        })
+      }
     })
   },
   clickImg (e) {
